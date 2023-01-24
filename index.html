@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Event handler</title>
+        <script>
+            window.onload = init; // This is a event handler that will call the function init when the page is fully loaded.
+
+            function init() {
+                var image = document.getElementById("zero");
+                image.onclick = showAnswer;
+            }
+
+            function showAnswer() {
+                var image = document.getElementById("zero");
+                image.setAttribute("src", "image/zero.jpg");
+            }
+        </script>
+        <style>
+            body {
+                margin: 20px;
+            }
+            div#container {
+                display: flex;
+                justify-content: center;
+            }
+            
+            div#imageContainer {
+                display: flex;
+                justify-content: center;
+            }
+
+            img {
+                width: auto;
+                height: auto;
+                border: solid 5px;
+                border-color: burlywood;
+                box-shadow: 5px 10px 8px 10px dimgray;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Can you guess who it is ?</h1>
+        </div>
+        <div id="imageContainer">
+            <img id="zero" src="image/zeroblur.jpg" alt="Whoa am I?" />
+        </div>
+    </body>
+</html>
