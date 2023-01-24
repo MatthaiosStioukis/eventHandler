@@ -7,30 +7,37 @@
             window.onload = init; // This is a event handler that will call the function init when the page is fully loaded.
 
             function init() {
-                var image = document.getElementById("zero");
-                image.onclick = showAnswer;
+                var images = document.getElementsByTagName("img");
+                for (var i = 0; i < images.length; i++) {
+                    images[i].onclick = showAnswer;
+                }
             }
-
-            function showAnswer() {
-                var image = document.getElementById("zero");
-                image.setAttribute("src", "image/zero.jpg");
+            // The onclick event returns a event object called eventObj that has properties  like target which holds the object the onclick ocured on.
+            // Then i get the in this case element's id and concatenate it with image/ + name + .jpg to update the element's src propertie.
+            function showAnswer(eventObj) {
+                var image = eventObj.target;
+                var name = image.id;
+                name = "image/" + name + ".jpg";
+                image.setAttribute("src", name);
             }
         </script>
         <style>
             body {
                 margin: 20px;
             }
-            div#container {
+            div.container {
                 display: flex;
                 justify-content: center;
             }
             
             div#imageContainer {
-                display: flex;
-                justify-content: center;
+                display: block;
+                margin: 0;
+                padding: 0;
             }
 
             img {
+                margin: 20px;
                 width: auto;
                 height: auto;
                 border: solid 5px;
@@ -41,11 +48,18 @@
         </style>
     </head>
     <body>
-        <div id="container">
+        <div class="container">
             <h1>Can you guess who it is ?</h1>
         </div>
-        <div id="imageContainer">
-            <img id="zero" src="image/zeroblur.jpg" alt="Whoa am I?" />
+        <div class="container"> 
+            <div id="imageContainer">
+                <img id="zero" src="image/zeroblur.jpg" alt="Who am I?" />
+                <img id="one" src="image/oneblur.jpg" alt="Who am I?" />
+                <img id="two" src="image/twoblur.jpg" alt="Who am I?" /> 
+                <img id="three" src="image/threeblur.jpg" alt="Who am I?" />
+                <img id="four" src="image/fourblur.jpg" alt="Who am I?" />
+                <img id="five" src="image/fiveblur.jpg" alt="Who am I?" />
+            </div>
         </div>
     </body>
 </html>
