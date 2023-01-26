@@ -9,12 +9,12 @@
             function init() {
                 var images = document.getElementsByTagName("img");
                 for (var i = 0; i < images.length; i++) {
-                    images[i].onclick = showAnswer;
+                    images[i].onmouseover = showAnswer;
                 }
             }
 
-            function timerHandler(eventObj) {
-                var image = eventObj;
+            function makeBlur(eventObj) {
+                var image = eventObj.target;
                 var name = image.id;
                 name = "image/" + name + "blur" + ".jpg";
                 image.src = name;
@@ -26,7 +26,7 @@
                 var name = image.id;
                 name = "image/" + name + ".jpg";
                 image.src = name;
-                setTimeout(timerHandler, 2500, image);
+                image.onmouseout = makeBlur;
             }
         </script>
         <style>
