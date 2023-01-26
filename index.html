@@ -12,17 +12,21 @@
                     images[i].onclick = showAnswer;
                 }
             }
+
+            function timerHandler(eventObj) {
+                var image = eventObj;
+                var name = image.id;
+                name = "image/" + name + "blur" + ".jpg";
+                image.src = name;
+            }
             // The onclick event returns a event object called eventObj that has properties  like target which holds the object the onclick ocured on.
             // Then i get the id this case element's id and concatenate it with image/ + name + .jpg to update the element's src propertie.
             function showAnswer(eventObj) {
                 var image = eventObj.target;
-                var name = image.src;
-                var hasBlur = name.indexOf("blur");
-                if (hasBlur > 0) {
-                    image.src = "image/" + image.id + ".jpg";
-                } else {
-                    image.src = "image/" + image.id + "blur" + ".jpg";
-                }
+                var name = image.id;
+                name = "image/" + name + ".jpg";
+                image.src = name;
+                setTimeout(timerHandler, 2500, image);
             }
         </script>
         <style>
